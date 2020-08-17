@@ -96,6 +96,40 @@
   </div>
 
 <script>
+
+// select items
+const checkBoxes = document.querySelectorAll("input");
+
+let lastChecked;
+
+function handleCheck(e) {
+  let inBetween = false;
+  if (this.checked && e.shiftKey) {
+    checkBoxes.forEach(checkbox => {
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+      };
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
+  };
+  lastChecked = this;
+};
+
+checkBoxes.forEach((item, index) => item.addEventListener('click', handleCheck));
+
+
+
+/* item.setAttribute("onclick", "geek (event);");
+
+function geek (event) { 
+            if (!event.shiftKey) return;
+            else { 
+                console.log(event); 
+            } 
+        } 
+ */
 </script>
 </body>
 </html>

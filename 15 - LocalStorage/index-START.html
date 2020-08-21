@@ -110,6 +110,7 @@
       const remove = document.querySelector("#remove");
 
       function checkAll() {
+        if (items.length === 0) return;
         items.map((item) => {
           item.done = true;
         });
@@ -118,6 +119,7 @@
       }
 
       function unCheckAll() {
+        if (items.length === 0) return;
         items.map((item) => {
           item.done = false;
         });

@@ -126,9 +126,16 @@
       }
 
       function removeAll() {
-        items.length = 0;
-        localStorage.setItem("items", JSON.stringify(items));
-        populateList(items, itemsList);
+        if (items.length === 0) return;
+        if (
+          window.confirm(
+            "Do you really want to remove all the items on your list?"
+          )
+        ) {
+          items.length = 0;
+          localStorage.setItem("items", JSON.stringify(items));
+          populateList(items, itemsList);
+        }
       }
 
       check.addEventListener("click", checkAll);
